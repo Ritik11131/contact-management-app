@@ -87,7 +87,7 @@ function Dashboard() {
 
     }
 
-    const donutSeries: any = [42872, 2323,232332,23123]
+    const donutSeries: any = [casesCountObj.cases,casesCountObj.deaths,casesCountObj.recovered,casesCountObj.active]
     const donutOptions: any = {
         chart: {
             type: 'donut',
