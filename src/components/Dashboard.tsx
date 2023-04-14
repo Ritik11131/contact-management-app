@@ -19,7 +19,7 @@ function Dashboard() {
     const dataYearly = useQuery({ queryKey: ['dataYearly'], queryFn: getDataYearly })
     const toatlCases = useQuery({ queryKey: ['toatlCases'], queryFn: getTotalCases })
 
-    const casesCountObj = toatlCases?.data?.data;
+    const casesCountObj = toatlCases && toatlCases?.data?.data;
     const cases = dataYearly?.data?.data?.cases;
     const deaths = dataYearly?.data?.data?.deaths;
     const recovered = dataYearly?.data?.data?.recovered;
@@ -87,7 +87,7 @@ function Dashboard() {
 
     }
 
-    const donutSeries: any = [casesCountObj.cases,casesCountObj.deaths,casesCountObj.recovered,casesCountObj.active]
+    const donutSeries: any = [casesCountObj?.cases,casesCountObj?.deaths,casesCountObj?.recovered,casesCountObj?.active]
     const donutOptions: any = {
         chart: {
             type: 'donut',
