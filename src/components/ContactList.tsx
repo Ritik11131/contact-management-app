@@ -1,12 +1,10 @@
 import React from 'react'
 import Card from './Card'
-import {useSelector} from 'react-redux'
 import { Link } from "react-router-dom";
 
 
 
 function ContactList() {
-  const contacts:any = useSelector((state)=> state)  
    
     return (
         <>
