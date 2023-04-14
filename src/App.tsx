@@ -21,8 +21,8 @@ function App() {
    return (
       <QueryClientProvider client={queryClient}>
       <Provider store={store}>
-         <Sidebar />
          <BrowserRouter>
+         <Sidebar />
             <Routes>
                <Route path="/" element={<ContactList />} />
                <Route path="/add" element={<AddContact />} />
