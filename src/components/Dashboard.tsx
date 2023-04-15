@@ -117,7 +117,7 @@ function Dashboard() {
             <div className='mt-36 mb-60'>
                 <ReactApexChart options={options} series={series} type="line" height={350} />
             </div>
-            <div className='mt-36 mb-60'>
+            <div className='mt-36 mb-40'>
                 <Map/> 
             </div>
         </div>
