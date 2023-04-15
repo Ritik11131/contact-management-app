@@ -45,7 +45,7 @@ const EditContact = () => {
     <>
       <form onSubmit={handleSubmit} >
         <div className="p-4 sm:p-40 sm:ml-64 border-b border-gray-900/10 pb-12">
-          <h2 className="font-semibold leading-9 text-2xl text-gray-900">Edit Contact {id}</h2>
+          <h2 className="font-semibold leading-9 text-2xl text-gray-900">Edit Contact : <span className='text-3xl text-indigo-600'>{firstName} {lastName}</span></h2>
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
             <div className="">
               <label htmlFor="first_name" className="block text-sm font-medium leading-6 text-gray-900">

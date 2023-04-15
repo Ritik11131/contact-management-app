@@ -1,10 +1,14 @@
 import React from 'react'
 import Card from './Card'
 import { Link } from "react-router-dom";
+import {useSelector} from 'react-redux'
+import NoRecordFound from './NoRecordFound';
+
 
 
 
 function ContactList() {
+    const contacts:any = useSelector((state)=> state)
    
     return (
         <>
@@ -15,7 +19,8 @@ function ContactList() {
                     </svg>
                 </Link>
             </div>
-            <Card/>
+            {contacts.length === 0 ? <NoRecordFound/> :  <Card contacts={contacts}/> }
+           
         </>
     )
 }
