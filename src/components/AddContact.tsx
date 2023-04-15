@@ -18,6 +18,13 @@ function AddContact() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    const checkName = contacts.find((contact:any)=>contact.first_name === firstName && contact.last_name === lastName)
+    if(!firstName || !lastName || !selectedOption) {
+      return alert("Please Fill in all the Fields");
+    }
+    if(checkName) {
+      return alert("Detials Already Exist");
+    }
     const data = {
       id: contacts?.length === 0 ? 0 : contacts[contacts?.length - 1]?.id + 1,
       first_name: firstName,
