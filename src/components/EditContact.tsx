@@ -127,10 +127,6 @@ const EditContact = () => {
         </div>
       </div>
     </form>
-
-
-
-
     </>
 
   )

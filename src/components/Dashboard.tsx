@@ -4,6 +4,8 @@ import ReactApexChart from 'react-apexcharts'
 import { useQuery } from '@tanstack/react-query'
 import { sumTotalCases } from '../helpers/sumTotalCases'
 import { mergeAndAddAllValues } from '../helpers/mergeAndAddAllValues'
+import Map from './Map'
+import CovidCards from './CovidCards'
 
 
 function Dashboard() {
@@ -18,6 +20,7 @@ function Dashboard() {
 
     const dataYearly = useQuery({ queryKey: ['dataYearly'], queryFn: getDataYearly })
     const toatlCases = useQuery({ queryKey: ['toatlCases'], queryFn: getTotalCases })
+
 
     const casesCountObj = toatlCases && toatlCases?.data?.data;
     const cases = dataYearly?.data?.data?.cases;
@@ -87,7 +90,7 @@ function Dashboard() {
 
     }
 
-    const donutSeries: any = [casesCountObj?.cases,casesCountObj?.deaths,casesCountObj?.recovered,casesCountObj?.active]
+    const donutSeries: any = [casesCountObj?.cases, casesCountObj?.deaths, casesCountObj?.recovered, casesCountObj?.active]
     const donutOptions: any = {
         chart: {
             type: 'donut',
@@ -101,7 +104,6 @@ function Dashboard() {
 
     }
 
-
     return (
         <div className='mt-16 sm:ml-64 sm:p-8'>
             <div className='container mx-auto'>
@@ -109,31 +111,17 @@ function Dashboard() {
                     <div className='flex p-28 sm:p-2 justify-center items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700'>
                         <ReactApexChart options={donutOptions} series={donutSeries} type="donut" height={450} width={450} />
                     </div>
-                    <div className='grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-2 h-96 mx-7 '>
-                        <div className="block  max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                            <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Total Cases </h5>
-                            <p className="font-normal text-xl text-gray-700 dark:text-gray-400">{casesCountObj?.cases}</p>
-                        </div>
-                        <div className="block  max-w-sm p-6 bg-white border border-red-200 rounded-lg shadow hover:bg-red-100 dark:bg-red-800 dark:border-red-700 dark:hover:bg-red-700">
-                            <h5 className="mb-2 text-3xl font-bold tracking-tight text-red-900 dark:text-white">Total Deaths </h5>
-                            <p className="font-normal text-xl text-white dark:text-white">{casesCountObj?.deaths}</p>
-                        </div>
-                        <div className="block  max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                            <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Total Tests </h5>
-                            <p className="font-normal text-xl text-gray-700 dark:text-gray-400">{casesCountObj?.tests}</p>
-                        </div>
-                        <div className="block  max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                            <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Total Recovered </h5>
-                            <p className="font-normal text-xl text-gray-700 dark:text-gray-400">{casesCountObj?.recovered}</p>
-                        </div>
-                    </div>
+                    <CovidCards casesCountObj={casesCountObj}/>
                 </div>
             </div>
-            <div className='mt-36 mx-6 mb-60'>
+            <div className='mt-36 mb-60'>
                 <ReactApexChart options={options} series={series} type="line" height={350} />
+            </div>
+            <div className='mt-36 mb-60'>
+                <Map/> 
             </div>
         </div>
     )
 }
 
-export default Dashboard
+export default Dashboard;
