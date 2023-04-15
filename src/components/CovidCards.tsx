@@ -24,4 +24,4 @@ function CovidCards({ casesCountObj }) {
     )
 }
 
-export default CovidCards
+export default CovidCards;
